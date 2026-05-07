@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /send.php
+Disallow: /.rate-limit/
+Disallow: /styleguide.html
+Disallow: /og-template.html
+
+Sitemap: https://major1.pl/sitemap.xml

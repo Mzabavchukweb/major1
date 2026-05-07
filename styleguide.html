@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Major1 — design system · styleguide</title>
+  <link rel="icon" href="brand/major1/logo/favicon-32x32.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,500;1,400&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono&display=swap">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* page-local helpers — only for the styleguide demo */
+    .sg-divider { border-top: 1px solid var(--border); margin: 0; }
+    .sg-stack > * + * { margin-top: 24px; }
+    .sg-stack-lg > * + * { margin-top: 56px; }
+    .sg-row {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 32px;
+      align-items: baseline;
+      padding-block: 12px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .sg-row:last-child { border-bottom: 0; }
+    .sg-row-meta {
+      font-family: var(--font-mono);
+      font-size: var(--text-label);
+      line-height: 1.4;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--ink-faint);
+      padding-top: 6px;
+    }
+    .sg-row-meta strong {
+      display: block;
+      color: var(--ink);
+      letter-spacing: 0.08em;
+    }
+    .sg-swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+    @media (max-width: 767px) {
+      .sg-swatch-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sg-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+    .sg-swatch {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      aspect-ratio: 4 / 3;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 0;
+    }
+    .sg-swatch-name { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+    .sg-swatch-hex  { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.04em; opacity: 0.72; }
+    .sg-cols-demo {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: var(--grid-gap-mobile);
+      width: 100%;
+    }
+    @media (min-width: 768px) {
+      .sg-cols-demo { gap: var(--grid-gap-desktop); }
+    }
+    .sg-col {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--border);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--ink-faint);
+      background-color: var(--accent-soft);
+    }
+    .section--ink .sg-col, .section--deep .sg-col {
+      background-color: rgba(245, 242, 236, 0.06);
+      border-color: var(--border);
+      color: var(--ink-faint);
+    }
+    .sg-grain-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    @media (max-width: 767px) {
+      .sg-grain-demo { grid-template-columns: 1fr; }
+    }
+    .sg-grain-tile {
+      aspect-ratio: 16 / 9;
+      background-color: var(--accent-soft);
+      border: 1px solid var(--border);
+    }
+    .sg-grain-tile.grain { isolation: isolate; }
+    .sg-buttons-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .sg-page-eyebrow { color: var(--ink-faint); }
+    .sg-figure-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    @media (max-width: 767px) { .sg-figure-grid { grid-template-columns: 1fr; } }
+    .sg-figure-placeholder {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background-image: linear-gradient(135deg, #d6c5b3 0%, #8a6b4a 100%);
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== Sekcja 00 — Header ===== -->
+  <header class="section section--paper">
+    <div class="container">
+      <p class="eyebrow sg-page-eyebrow">00 — Styleguide</p>
+      <h1 class="t-display-xl u-mt-4 u-text-balance">Major1 — design system.</h1>
+      <p class="t-body-lg u-color-muted u-mt-4 u-max-prose">
+        Wizualny styleguide dla redesignu major1.pl. Tonowy krem, lekki serif Fraunces, asymetryczny grid, terracotta jako jedyny akcent. Strona referencyjna do KROKU 4. Nie linkowana w produkcji.
+      </p>
+    </div>
+  </header>
+
+  <hr class="sg-divider">
+
+  <!-- ===== Sekcja 01 — Typography ===== -->
+  <section class="section section--paper">
+    <div class="container">
+      <p class="eyebrow">01 — Typography</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Skala typograficzna</h2>
+
+      <div class="sg-stack">
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-display-xl</strong>Fraunces 300 · clamp 56→128</div>
+          <div class="t-display-xl">Bezpieczeństwo na najwyższym poziomie.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-display-lg</strong>Fraunces 400 · clamp 48→96</div>
+          <div class="t-display-lg">Agencja Ochrony Major1.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-display-md</strong>Fraunces 400 · clamp 40→72</div>
+          <div class="t-display-md">Najlepsi pracują z najlepszymi.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-display-sm</strong>Fraunces 400 · clamp 32→56</div>
+          <div class="t-display-sm">Joanna Jędrzejczyk.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-headline</strong>Inter Tight 500 · clamp 24→32</div>
+          <div class="t-headline">Ochrona fizyczna obiektów.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-title</strong>Inter Tight 500 · clamp 20→24</div>
+          <div class="t-title">Zakres naszych usług.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-quote</strong>Fraunces 400 italic · clamp 22→32</div>
+          <div class="t-quote">Najlepsi pracują z najlepszymi.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-body-lg</strong>Inter Tight 400 · 18px</div>
+          <div class="t-body-lg u-max-prose">Działamy od 2011 roku, tworząc zespół wysoko wykwalifikowanych specjalistów, dla których priorytetem jest skuteczna ochrona.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-body</strong>Inter Tight 400 · 17px</div>
+          <div class="t-body u-max-prose">Profesjonalna agencja ochrony Major1 z Poznania — gwarantujemy kompleksową obsługę na terenie całego kraju. Klienci VIP, obiekty komercyjne, monitoring i konwoje.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-body-sm</strong>Inter Tight 400 · 15px</div>
+          <div class="t-body-sm u-max-prose">Doświadczenie. Niezawodność. Zaangażowanie. Nasz zespół to utytułowani zawodnicy i instruktorzy sportów walki.</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-caption</strong>Inter Tight 400 · 14px</div>
+          <div class="t-caption">Tomasz Adamek · Filmowano w 2024 · Materiał: Major1 · @major_1_security_agency</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-label</strong>JetBrains Mono · 12px · ls 0.08</div>
+          <div class="t-label">01 — Agencja Ochrony Major1</div>
+        </div>
+        <div class="sg-row">
+          <div class="sg-row-meta"><strong>t-mono</strong>JetBrains Mono · inherit</div>
+          <div class="t-body"><span class="t-mono">+48 884 636 363</span> · <span class="t-mono">NIP 783-168-42-52</span> · <span class="t-mono">00:15</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sg-divider">
+
+  <!-- ===== Sekcja 02 — Palette ===== -->
+  <section class="section section--paper">
+    <div class="container">
+      <p class="eyebrow">02 — Palette</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Kolory · 11 tokenów</h2>
+
+      <div class="sg-swatch-grid">
+        <div class="sg-swatch" style="background:#F5F2EC; color:#0F1410;">
+          <span class="sg-swatch-name">--bg-paper</span>
+          <span class="sg-swatch-hex">#F5F2EC</span>
+        </div>
+        <div class="sg-swatch" style="background:#FAF9F6; color:#0F1410;">
+          <span class="sg-swatch-name">--bg-white</span>
+          <span class="sg-swatch-hex">#FAF9F6</span>
+        </div>
+        <div class="sg-swatch" style="background:#0F1410; color:#F5F2EC;">
+          <span class="sg-swatch-name">--bg-ink</span>
+          <span class="sg-swatch-hex">#0F1410</span>
+        </div>
+        <div class="sg-swatch" style="background:#1A2F1F; color:#F5F2EC;">
+          <span class="sg-swatch-name">--bg-deep</span>
+          <span class="sg-swatch-hex">#1A2F1F</span>
+        </div>
+        <div class="sg-swatch" style="background:#0F1410; color:#F5F2EC;">
+          <span class="sg-swatch-name">--ink</span>
+          <span class="sg-swatch-hex">#0F1410</span>
+        </div>
+        <div class="sg-swatch" style="background:#4A4F49; color:#F5F2EC;">
+          <span class="sg-swatch-name">--ink-muted</span>
+          <span class="sg-swatch-hex">#4A4F49</span>
+        </div>
+        <div class="sg-swatch" style="background:#8B8E89; color:#0F1410;">
+          <span class="sg-swatch-name">--ink-faint</span>
+          <span class="sg-swatch-hex">#8B8E89</span>
+        </div>
+        <div class="sg-swatch" style="background:#C8553D; color:#F5F2EC;">
+          <span class="sg-swatch-name">--accent</span>
+          <span class="sg-swatch-hex">#C8553D</span>
+        </div>
+        <div class="sg-swatch" style="background:#E8DDD4; color:#0F1410;">
+          <span class="sg-swatch-name">--accent-soft</span>
+          <span class="sg-swatch-hex">#E8DDD4</span>
+        </div>
+        <div class="sg-swatch" style="background:#F5F2EC; color:#0F1410; border-color: rgba(15,20,16,0.32);">
+          <span class="sg-swatch-name">--border</span>
+          <span class="sg-swatch-hex">rgba(15,20,16,.12)</span>
+        </div>
+        <div class="sg-swatch" style="background:#0F1410; color:#F5F2EC;">
+          <span class="sg-swatch-name">--paper-on-ink</span>
+          <span class="sg-swatch-hex">#F5F2EC</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sg-divider">
+
+  <!-- ===== Sekcja 03 — Components ===== -->
+  <section class="section section--paper">
+    <div class="container">
+      <p class="eyebrow">03 — Components</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Linki, przyciski, figura, grid</h2>
+
+      <div class="sg-stack-lg">
+
+        <!-- link-editorial -->
+        <div>
+          <p class="t-label u-mb-2">Link · .link-editorial</p>
+          <p class="t-body-lg u-max-prose">
+            Czytaj więcej o naszym <a class="link-editorial" href="#">zespole sportowym</a>, ofercie <a class="link-editorial" href="#">Ochrony VIP</a> oraz <a class="link-editorial" href="#">monitoringu obiektów</a>. Hover → underline grow-from-left, kolor terracotta.
+          </p>
+        </div>
+
+        <!-- buttons -->
+        <div>
+          <p class="t-label u-mb-2">Przyciski · .btn-text · .btn-text--accent</p>
+          <div class="sg-buttons-row">
+            <a class="btn-text" href="#">Skontaktuj się</a>
+            <a class="btn-text btn-text--accent" href="#">Zamów rozmowę</a>
+            <button class="btn-text" type="button">Zobacz ofertę</button>
+            <button class="btn-text btn-text--accent" type="button">Najlepsi pracują z najlepszymi →</button>
+          </div>
+        </div>
+
+        <!-- figure -->
+        <div>
+          <p class="t-label u-mb-2">Figura · .figure / .figure-img--bw (hover → kolor)</p>
+          <div class="sg-figure-grid">
+            <figure class="figure">
+              <div class="figure-img figure-img--bw sg-figure-placeholder" role="img" aria-label="Portret VIP — placeholder"></div>
+              <figcaption class="figure-caption">03.04 · Joanna Jędrzejczyk · MMA · 2024-11-10</figcaption>
+            </figure>
+            <figure class="figure grain">
+              <div class="figure-img sg-figure-placeholder" role="img" aria-label="Hero zdjęcie — placeholder z grain"></div>
+              <figcaption class="figure-caption">Hero · z grain overlay · ig-04-DCM874mutO0</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- grid-12 -->
+        <div>
+          <p class="t-label u-mb-2">Siatka · .grid-12 · 12 kolumn</p>
+          <div class="sg-cols-demo">
+            <div class="sg-col">1</div><div class="sg-col">2</div><div class="sg-col">3</div>
+            <div class="sg-col">4</div><div class="sg-col">5</div><div class="sg-col">6</div>
+            <div class="sg-col">7</div><div class="sg-col">8</div><div class="sg-col">9</div>
+            <div class="sg-col">10</div><div class="sg-col">11</div><div class="sg-col">12</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="sg-divider">
+
+  <!-- ===== Sekcja 04 — On dark (ink) ===== -->
+  <section class="section section--ink">
+    <div class="container">
+      <p class="eyebrow">04 — On dark · ink</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Komponenty na #0F1410</h2>
+
+      <div class="sg-stack-lg">
+        <p class="t-body-lg u-max-prose">
+          Czytaj o <a class="link-editorial" href="#">naszych klientach VIP</a> i <a class="link-editorial" href="#">filmach reportażowych</a>. Akcent terracotta zachowuje siłę także na ciemnym tle.
+        </p>
+        <div class="sg-buttons-row">
+          <a class="btn-text" href="#">Skontaktuj się</a>
+          <a class="btn-text btn-text--accent" href="#">Zamów rozmowę</a>
+        </div>
+        <div class="sg-cols-demo">
+          <div class="sg-col">1</div><div class="sg-col">2</div><div class="sg-col">3</div>
+          <div class="sg-col">4</div><div class="sg-col">5</div><div class="sg-col">6</div>
+          <div class="sg-col">7</div><div class="sg-col">8</div><div class="sg-col">9</div>
+          <div class="sg-col">10</div><div class="sg-col">11</div><div class="sg-col">12</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Sekcja 04b — On dark (deep) ===== -->
+  <section class="section section--deep">
+    <div class="container">
+      <p class="eyebrow">04b — On dark · deep forest</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Komponenty na #1A2F1F</h2>
+
+      <div class="sg-stack-lg">
+        <p class="t-body-lg u-max-prose">
+          Tło "deep forest" jako alternatywa dla pure ink — bardziej "security-quiet". Te same komponenty, ten sam akcent.
+        </p>
+        <div class="sg-buttons-row">
+          <a class="btn-text" href="#">Skontaktuj się</a>
+          <a class="btn-text btn-text--accent" href="#">Zamów rozmowę</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="sg-divider">
+
+  <!-- ===== Sekcja 05 — Grain ===== -->
+  <section class="section section--paper">
+    <div class="container">
+      <p class="eyebrow">05 — Grain overlay</p>
+      <h2 class="t-display-md u-mt-2 u-mb-6">Bez grain · Z grain</h2>
+
+      <div class="sg-grain-demo">
+        <div>
+          <p class="t-label u-mb-2">Plain</p>
+          <div class="sg-grain-tile" role="img" aria-label="Tile bez grain"></div>
+        </div>
+        <div>
+          <p class="t-label u-mb-2">.grain — opacity .05 · multiply blend</p>
+          <div class="sg-grain-tile grain" role="img" aria-label="Tile z grain overlay"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+
+# Editors / IDE
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# PHP runtime artefacts
+.rate-limit/
+*.log
+error_log
+mail.log
+
+# Env / secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+config.local.php
+
+# Node (not used here, but in case)
+node_modules/
+npm-debug.log*
+
+# Build outputs
+dist/
+build/
+
+# Brand reference / recon assets — niezwiązane z deploy
+brand/
+
+# OS junk
+Thumbs.db
+desktop.ini
