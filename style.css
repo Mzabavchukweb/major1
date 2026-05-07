@@ -499,10 +499,10 @@ body {
 .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media (max-width: 768px) {
-  .site-header__bar { height: 80px; }
-  .site-header__logo { top: 8px; width: 130px; }
-  .site-header.is-scrolled .site-header__bar { height: 56px; }
-  .site-header.is-scrolled .site-header__logo { top: 4px; width: 90px; }
+  .site-header__bar { height: 72px; }
+  .site-header__logo { top: 0px; width: 160px; }
+  .site-header.is-scrolled .site-header__bar { height: 52px; }
+  .site-header.is-scrolled .site-header__logo { top: -2px; width: 110px; }
   .site-header__inner { padding-inline: 20px; }
 }
 
